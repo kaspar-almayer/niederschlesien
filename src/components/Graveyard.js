@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { supabase } from "../supabaseClient";
 
@@ -50,7 +50,7 @@ function Graveyard() {
   useEffect(() => {
     getGravese();
     getGraveyard();
-  }, []);
+  });
   return (
     <div className="container">
       <Header />

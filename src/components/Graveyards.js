@@ -1,24 +1,9 @@
 import { useState, useEffect } from "react";
-import { MapContainer, TileLayer, useMap, Marker } from "react-leaflet";
 
 import { supabase } from "../supabaseClient";
 
 import Header from "./Header";
 import Map from "./Map";
-
-// marker hack
-import L from "leaflet";
-import icon from "leaflet/dist/images/marker-icon.png";
-import iconShadow from "leaflet/dist/images/marker-shadow.png";
-
-let DefaultIcon = L.icon({
-  iconUrl: icon,
-  shadowUrl: iconShadow,
-  iconAnchor: [13, 41],
-});
-
-L.Marker.prototype.options.icon = DefaultIcon;
-// end marker hack
 
 function Graveyards() {
   const [graveyards, setGraveyards] = useState(null);

@@ -6,7 +6,7 @@ function Header({ grave }) {
         <h1 className="logo">niederschlesien</h1>
       </Link>
       <div className="main-header__nav">
-        <a href="#">kontakt</a>
+        <span>kontakt</span>
         <Link to="/graveyards">cmentarze</Link>
       </div>
     </header>
