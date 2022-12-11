@@ -1,13 +1,39 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import reportWebVitals from "./reportWebVitals";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import "leaflet/dist/leaflet.css";
+import "./index.css";
+
+import App from "./App";
+import Add from "./components/Add";
+import Graveyards from "./components/Graveyards";
+import Graveyard from "./components/Graveyard";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+  },
+  {
+    path: "/add",
+    element: <Add />,
+  },
+  {
+    path: "/graveyards",
+    element: <Graveyards />,
+  },
+  {
+    path: "/graveyard/:graveyardId",
+    element: <Graveyard />,
+  },
+]);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
