@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RouterProvider, createHashRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 
 import "leaflet/dist/leaflet.css";
@@ -11,7 +11,7 @@ import Add from "./components/Add";
 import Graveyards from "./components/Graveyards";
 import Graveyard from "./components/Graveyard";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <App />,
