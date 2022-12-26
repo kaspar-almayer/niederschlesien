@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import { supabase } from "../supabaseClient";
 
@@ -11,6 +12,7 @@ function Graveyard() {
   const [graves, setGraves] = useState(null);
   const [graveyard, setGraveyard] = useState(null);
   let { graveyardId } = useParams();
+  const { t } = useTranslation();
 
   const getGravese = async () => {
     try {
@@ -54,7 +56,9 @@ function Graveyard() {
   return (
     <div className="container">
       <Header />
-      <h1>cmentarz: {graveyard?.name}</h1>
+      <h1>
+        {t("graveyard")}: {graveyard?.name}
+      </h1>
       {graveyard ? (
         <Map graveyards={[graveyard]} showPopup={false}></Map>
       ) : null}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 import { supabase } from "../supabaseClient";
 
@@ -6,6 +7,7 @@ import Header from "./Header";
 import Map from "./Map";
 
 function Graveyards() {
+  const { t } = useTranslation();
   const [graveyards, setGraveyards] = useState(null);
   useEffect(() => {
     const getProfile = async () => {
@@ -30,7 +32,7 @@ function Graveyards() {
   return (
     <div className="container">
       <Header />
-      <h1>gravesyards map:</h1>
+      <h1>{t("graveyardsMap")}</h1>
       <Map graveyards={graveyards} showPopup></Map>
     </div>
   );

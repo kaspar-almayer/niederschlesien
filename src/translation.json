@@ -1,0 +1,54 @@
+{
+  "pl": {
+    "translation": {
+      "mainHeading": "Niemieckie groby na Dolnym Śląsku",
+      "grave": {
+        "name": "Imię",
+        "surname": "Nazwisko",
+        "birthDate": "Data urodzenia",
+        "deathDate": "Data śmierci"
+      },
+      "graveyard": "Cmentarz",
+      "graveyardsMap": "Mapa cmentarzy",
+      "header": {
+        "contact": "kontakt",
+        "graveyards": "cmentarze",
+        "search": "wyszukaj",
+        "setLang": "zmień język"
+      },
+      "search": {
+        "title": "Wyszukaj",
+        "label": "Nazwisko",
+        "submitButton": "wyszukaj",
+        "searchResultsHeading": "Wyniki wyszukiwania",
+        "errorMessage": "Brak wyników wyszukiwania"
+      }
+    }
+  },
+  "de": {
+    "translation": {
+      "mainHeading": "Deutsche Gräber in Niederschlesien",
+      "grave": {
+        "name": "Vorname",
+        "surname": "Nachname",
+        "birthDate": "Geburtsdatum",
+        "deathDate": "Sterbedatum"
+      },
+      "graveyard": "Friedhof",
+      "graveyardsMap": "Karte der Friedhöfe",
+      "header": {
+        "contact": "kontakt",
+        "graveyards": "friedhöfe",
+        "search": "suche",
+        "setLang": "sprache ändern"
+      },
+      "search": {
+        "title": "Suche",
+        "label": "Nachname",
+        "submitButton": "suche",
+        "searchResultsHeading": "Suchergebnisse",
+        "errorMessage": "Keine Suchergebnisse"
+      }
+    }
+  }
+}

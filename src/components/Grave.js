@@ -1,19 +1,34 @@
-//import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import Zoom from "react-medium-image-zoom";
 
 const imgBaseUrl =
   "https://exwqjdjcxzewandmmsei.supabase.co/storage/v1/object/public/graves/";
 
 function Grave({ grave }) {
+  const { t } = useTranslation();
   return (
     <div className="card">
-      <img src={imgBaseUrl + grave.img} alt="" className="card__img" />
+      <Zoom>
+        <img src={imgBaseUrl + grave.img} alt="" className="card__img" />
+      </Zoom>
       <div className="card__content">
-        <p>Imię: {grave.name}</p>
-        <p>Nazwisko: {grave.surname}</p>
-        <p>Data urodzenia: {grave.birth_date}</p>
-        <p>Data śmierci: {grave.death_date}</p>
-        <Link to={`/graveyard/${grave.graveyard}`}> Cmentarz &#x2192;</Link>
+        <p>
+          {t("grave.name")}: {grave.name}
+        </p>
+        <p>
+          {t("grave.surname")}: {grave.surname}
+        </p>
+        <p>
+          {t("grave.birthDate")}: {grave.birth_date}
+        </p>
+        <p>
+          {t("grave.deathDate")}: {grave.death_date}
+        </p>
+        <Link to={`/graveyard/${grave.graveyard}`}>
+          {" "}
+          {t("graveyard")} &#x2192;
+        </Link>
       </div>
     </div>
   );
