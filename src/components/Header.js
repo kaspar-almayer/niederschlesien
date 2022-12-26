@@ -8,14 +8,11 @@ function Header() {
   };
   return (
     <header className="main-header">
-      <Link to="/">
-        <h1 className="logo">niederschlesien</h1>
-      </Link>
-      <div className="main-header__nav">
-        <span>{t("header.contact")}</span>
-        <Link to="/graveyards">{t("header.graveyards")}</Link>
-        <Link to="/search">{t("header.search")}</Link>
-        <span>
+      <div className="main-header__logo">
+        <Link to="/">
+          <h1>niederschlesien</h1>
+        </Link>
+        <div className="main-header__lang   main-header__lang--mobile">
           <label for="lang">{t("header.setLang")}:</label>
           <select
             name="lang"
@@ -26,7 +23,24 @@ function Header() {
             <option value="pl">Polski</option>
             <option value="de">Deutsche</option>
           </select>
-        </span>
+        </div>
+      </div>
+      <div className="main-header__nav">
+        <span>{t("header.contact")}</span>
+        <Link to="/graveyards">{t("header.graveyards")}</Link>
+        <Link to="/search">{t("header.search")}</Link>
+        <div className="main-header__lang">
+          <label for="lang">{t("header.setLang")}:</label>
+          <select
+            name="lang"
+            id="lang"
+            onChange={changeLang}
+            value={i18n.language}
+          >
+            <option value="pl">Polski</option>
+            <option value="de">Deutsche</option>
+          </select>
+        </div>
       </div>
     </header>
   );

@@ -59,13 +59,18 @@ function Graveyard() {
       <h1>
         {t("graveyard")}: {graveyard?.name}
       </h1>
-      {graveyard ? (
-        <Map graveyards={[graveyard]} showPopup={false}></Map>
-      ) : null}
-      <h3>groby:</h3>
-      {graves?.map((grave, index) => (
-        <Grave key={index} grave={grave} />
-      ))}
+      <div className="row">
+        <div className="col">
+          {graves?.map((grave, index) => (
+            <Grave key={index} grave={grave} showGrveyardLink={false} />
+          ))}
+        </div>
+        <div className="col">
+          {graveyard ? (
+            <Map graveyards={[graveyard]} showPopup={false}></Map>
+          ) : null}
+        </div>
+      </div>
     </div>
   );
 }

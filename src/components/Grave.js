@@ -5,7 +5,7 @@ import Zoom from "react-medium-image-zoom";
 const imgBaseUrl =
   "https://exwqjdjcxzewandmmsei.supabase.co/storage/v1/object/public/graves/";
 
-function Grave({ grave }) {
+function Grave({ grave, showGrveyardLink = true }) {
   const { t } = useTranslation();
   return (
     <div className="card">
@@ -25,10 +25,12 @@ function Grave({ grave }) {
         <p>
           {t("grave.deathDate")}: {grave.death_date}
         </p>
-        <Link to={`/graveyard/${grave.graveyard}`}>
-          {" "}
-          {t("graveyard")} &#x2192;
-        </Link>
+        {showGrveyardLink && (
+          <Link to={`/graveyard/${grave.graveyard}`}>
+            {" "}
+            {t("graveyard")} &#x2192;
+          </Link>
+        )}
       </div>
     </div>
   );
