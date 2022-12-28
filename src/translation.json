@@ -1,7 +1,7 @@
 {
   "pl": {
     "translation": {
-      "mainHeading": "Niemieckie groby na Dolnym Śląsku",
+      "mainHeading": "Katalog niemieckich grobów w Polsce",
       "grave": {
         "name": "Imię",
         "surname": "Nazwisko",
@@ -27,7 +27,7 @@
   },
   "de": {
     "translation": {
-      "mainHeading": "Deutsche Gräber in Niederschlesien",
+      "mainHeading": "Verzeichnis deutscher Gräber in Polen",
       "grave": {
         "name": "Vorname",
         "surname": "Nachname",

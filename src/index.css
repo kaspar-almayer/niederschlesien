@@ -6,7 +6,8 @@ body {
   font-family: 'IBM Plex Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  //background-color: #e5e7eb;
+  background-color: #f9f4f0;;
+  color:#4D4D4D;
 }
 
 code {

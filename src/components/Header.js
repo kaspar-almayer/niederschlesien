@@ -10,7 +10,7 @@ function Header() {
     <header className="main-header">
       <div className="main-header__logo">
         <Link to="/">
-          <h1>niederschlesien</h1>
+          <h1>ostgebiete.online</h1>
         </Link>
         <div className="main-header__lang   main-header__lang--mobile">
           <label for="lang">{t("header.setLang")}:</label>

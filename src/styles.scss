@@ -1,5 +1,5 @@
 $base-color: #1142B1;
-
+$text-color: #4D4D4D;
 //--e-global-color-secondary: #082E87;
 // --e-global-color-text: #4D4D4D;
 // --e-global-color-accent: #CB2C2C;
@@ -39,6 +39,10 @@ img {
         justify-content: space-between;
         align-items: center;
         margin-bottom: 1rem;
+        a {
+            color: $text-color;
+            text-decoration: none;
+        }
         h1 {
             font-size: 1.5rem;
             @media (min-width: 600px) {
