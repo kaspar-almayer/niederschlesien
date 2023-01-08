@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { supabase } from "../supabaseClient";
 
@@ -8,6 +8,29 @@ function Add() {
   const [birthDate, setBirthDate] = useState("");
   const [deathDate, setDeathDate] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
+
+  const [selectedGraveyard, setSelectedGraveyard] = useState("");
+  const [graveyards, setGraveyards] = useState(null);
+  useEffect(() => {
+    const getProfile = async () => {
+      try {
+        let { data, error, status } = await supabase
+          .from("graveyards")
+          .select("*");
+        if (error && status !== 406) {
+          throw error;
+        }
+        if (data) {
+          console.log(data);
+          setGraveyards(data);
+        }
+      } catch (error) {
+        alert(error.message);
+      }
+    };
+
+    getProfile();
+  }, []);
 
   function submit() {
     console.log(name);
@@ -38,6 +61,7 @@ function Add() {
                 birth_date: birthDate,
                 death_date: deathDate,
                 img: imgData.path,
+                graveyard: selectedGraveyard,
               },
             ]);
 
@@ -62,6 +86,10 @@ function Add() {
     console.log(e.target.files[0]);
     setSelectedFile(e.target.files[0]);
   }
+  const onGraveyardSelect = (e) => {
+    setSelectedGraveyard(e.target.value);
+    console.log(e.target.value)
+  };
 
   return (
     <div>
@@ -97,6 +125,17 @@ function Add() {
       <div>
         <input type="file" accept="image/*" onChange={chandleFileInput} />
       </div>
+      <div>
+          <label>cmentarz:</label>
+          <select
+            name="lang"
+            id="lang"
+            onChange={onGraveyardSelect}
+            //value={i18n.language}
+          >
+            {graveyards?.map(graveyard => <option value={graveyard.id}>{graveyard.name}</option>)}
+          </select>
+        </div>
       <button onClick={submit}>dodaj</button>
     </div>
   );

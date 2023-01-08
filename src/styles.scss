@@ -1,4 +1,4 @@
-$base-color: #1142B1;
+$base-color: #354228;
 $text-color: #4D4D4D;
 //--e-global-color-secondary: #082E87;
 // --e-global-color-text: #4D4D4D;
@@ -23,7 +23,7 @@ img {
 }
 
 .main-header {
-    
+    margin-top: 2rem;
     
     @media (min-width: 600px) {
         display: flex;
@@ -45,8 +45,21 @@ img {
         }
         h1 {
             font-size: 1.5rem;
+            font-family: 'UnifrakturMaguntia', cursive;
+
             @media (min-width: 600px) {
                 font-size: 2rem;
+            }
+
+            span {
+                font-family: 'IBM Plex Sans', sans-serif;
+                font-size: 1.3rem;
+            }
+        }
+        img {
+            width: 100px;
+            @media (min-width: 600px) {
+                width: 180px;
             }
         }
 

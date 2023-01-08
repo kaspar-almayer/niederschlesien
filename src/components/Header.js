@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import logo from "../assets/logo.svg"
 
 function Header() {
   const { t, i18n } = useTranslation();
@@ -10,7 +11,7 @@ function Header() {
     <header className="main-header">
       <div className="main-header__logo">
         <Link to="/">
-          <h1>ostgebiete.online</h1>
+          <img src={logo}></img>
         </Link>
         <div className="main-header__lang   main-header__lang--mobile">
           <label for="lang">{t("header.setLang")}:</label>

@@ -52,7 +52,7 @@ function Graveyard() {
   useEffect(() => {
     getGravese();
     getGraveyard();
-  });
+  }, []);
   return (
     <div className="container">
       <Header />
