@@ -11,10 +11,10 @@ function Header() {
     <header className="main-header">
       <div className="main-header__logo">
         <Link to="/">
-          <img src={logo}></img>
+          <img src={logo} alt="logo"></img>
         </Link>
         <div className="main-header__lang   main-header__lang--mobile">
-          <label for="lang">{t("header.setLang")}:</label>
+          <label htmlFor="lang">{t("header.setLang")}:</label>
           <select
             name="lang"
             id="lang"
@@ -31,7 +31,7 @@ function Header() {
         <Link to="/graveyards">{t("header.graveyards")}</Link>
         <Link to="/search">{t("header.search")}</Link>
         <div className="main-header__lang">
-          <label for="lang">{t("header.setLang")}:</label>
+          <label htmlFor="lang">{t("header.setLang")}:</label>
           <select
             name="lang"
             id="lang"

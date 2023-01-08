@@ -13,7 +13,8 @@ function Graveyard() {
   const [graveyard, setGraveyard] = useState(null);
   let { graveyardId } = useParams();
   const { t } = useTranslation();
-
+  
+  useEffect(() => {
   const getGravese = async () => {
     try {
       let { data, error, status } = await supabase
@@ -49,10 +50,9 @@ function Graveyard() {
     }
   };
 
-  useEffect(() => {
     getGravese();
     getGraveyard();
-  }, []);
+  }, [graveyardId]);
   return (
     <div className="container">
       <Header />

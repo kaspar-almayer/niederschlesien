@@ -27,8 +27,8 @@ function Map({ graveyards, showPopup }) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {graveyards?.map((graveyard) => (
-        <Marker position={[graveyard.lat, graveyard.lng]}>
+      {graveyards?.map((graveyard, index) => (
+        <Marker key={index} position={[graveyard.lat, graveyard.lng]}>
           {showPopup ? (
             <Popup>
               <Link to={`/graveyard/${graveyard.id}`}>
