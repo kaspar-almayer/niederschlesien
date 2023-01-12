@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useTranslation } from "react-i18next";
 
 import { supabase } from "../supabaseClient";
 
 import Header from "./Header";
-import Map from "./Map";
+const Map = React.lazy(() => import('./Map'));
 
 function Graveyards() {
   const { t } = useTranslation();
@@ -33,7 +33,9 @@ function Graveyards() {
     <div className="container">
       <Header />
       <h1>{t("graveyardsMap")}</h1>
-      <Map graveyards={graveyards} showPopup></Map>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Map graveyards={graveyards} showPopup></Map>
+      </Suspense>
     </div>
   );
 }

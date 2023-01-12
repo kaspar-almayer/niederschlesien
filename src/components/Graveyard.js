@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -6,7 +6,7 @@ import { supabase } from "../supabaseClient";
 
 import Header from "./Header";
 import Grave from "./Grave";
-import Map from "./Map";
+const Map = React.lazy(() => import('./Map'));
 
 function Graveyard() {
   const [graves, setGraves] = useState(null);
@@ -66,9 +66,11 @@ function Graveyard() {
           ))}
         </div>
         <div className="col">
-          {graveyard ? (
-            <Map graveyards={[graveyard]} showPopup={false}></Map>
-          ) : null}
+          <Suspense fallback={<div>Loading...</div>}> 
+            {graveyard ? (
+              <Map graveyards={[graveyard]} showPopup={false}></Map>
+            ) : null}
+          </Suspense>
         </div>
       </div>
     </div>
