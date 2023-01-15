@@ -14,7 +14,7 @@
         "contact": "kontakt",
         "graveyards": "cmentarze",
         "search": "wyszukaj",
-        "setLang": "zmień język"
+        "setLang": "język"
       },
       "search": {
         "title": "Wyszukaj",
@@ -40,7 +40,7 @@
         "contact": "kontakt",
         "graveyards": "friedhöfe",
         "search": "suche",
-        "setLang": "sprache ändern"
+        "setLang": "sprache"
       },
       "search": {
         "title": "Suche",

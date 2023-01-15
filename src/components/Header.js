@@ -13,24 +13,13 @@ function Header() {
         <Link to="/">
           <img src={logo} alt="logo"></img>
         </Link>
-        <div className="main-header__lang   main-header__lang--mobile">
-          <label htmlFor="lang">{t("header.setLang")}:</label>
-          <select
-            name="lang"
-            id="lang"
-            onChange={changeLang}
-            value={i18n.language}
-          >
-            <option value="pl">Polski</option>
-            <option value="de">Deutsche</option>
-          </select>
-        </div>
       </div>
       <div className="main-header__nav">
-        <span>{t("header.contact")}</span>
+        <Link to="/contact">{t("header.contact")}</Link>
         <Link to="/graveyards">{t("header.graveyards")}</Link>
         <Link to="/search">{t("header.search")}</Link>
-        <div className="main-header__lang">
+      </div>
+      <div className="main-header__lang">
           <label htmlFor="lang">{t("header.setLang")}:</label>
           <select
             name="lang"
@@ -38,11 +27,10 @@ function Header() {
             onChange={changeLang}
             value={i18n.language}
           >
-            <option value="pl">Polski</option>
-            <option value="de">Deutsche</option>
+            <option value="pl">PL</option>
+            <option value="de">DE</option>
           </select>
         </div>
-      </div>
     </header>
   );
 }

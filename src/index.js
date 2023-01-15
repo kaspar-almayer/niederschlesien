@@ -16,6 +16,7 @@ import Add from "./components/Add";
 import Graveyards from "./components/Graveyards";
 import Graveyard from "./components/Graveyard";
 import Search from "./components/Search";
+import Contact from "./components/Contact";
 
 const router = createHashRouter([
   {
@@ -37,6 +38,10 @@ const router = createHashRouter([
   {
     path: "/search",
     element: <Search />,
+  },
+  {
+    path: "/contact",
+    element: <Contact />,
   },
 ]);
 

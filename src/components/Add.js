@@ -1,6 +1,23 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import { supabase } from "../supabaseClient";
+
+async function uploadImage(selectedFile)   {
+  console.log("uploadImage function")
+  const fileFullName = selectedFile.name;
+  const fileName = fileFullName.split(".")[0];
+  const fileExt = fileFullName.split(".")[1];
+
+  const { data: imgData, error } = await supabase.storage
+          .from("graves")
+          .upload(`${fileName}_${Date.now()}.${fileExt}`, selectedFile, {
+            cacheControl: "3600",
+            upsert: false,
+          });
+
+  return {imgData, error}
+}
 
 function Add() {
   const [name, setName] = useState("");
@@ -36,16 +53,9 @@ function Add() {
     console.log(name);
     console.log(selectedFile);
     const addGrave = async () => {
-      const fileFullName = selectedFile.name;
-      const fileName = fileFullName.split(".")[0];
-      const fileExt = fileFullName.split(".")[1];
+      
       try {
-        const { data: imgData, error } = await supabase.storage
-          .from("graves")
-          .upload(`${fileName}_${Date.now()}.${fileExt}`, selectedFile, {
-            cacheControl: "3600",
-            upsert: false,
-          });
+        const {imgData, error} = await uploadImage(selectedFile)
 
         if (error) {
           throw error;
@@ -93,6 +103,7 @@ function Add() {
 
   return (
     <div>
+      <Link to={'/'}>powrót</Link>
       <h1>dodaj grób</h1>
       <div>
         <input
