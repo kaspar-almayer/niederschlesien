@@ -6,11 +6,8 @@ import { supabase } from "../supabaseClient";
 
 async function uploadCloudinaryImage(selectedFile) {
 
-  const fileFullName = selectedFile.name;
-
-
   const formData = new FormData();
-
+  
   formData.append("file", selectedFile);
   formData.append("upload_preset", "nimlzmm1");
 
