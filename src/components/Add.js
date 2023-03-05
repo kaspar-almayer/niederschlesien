@@ -3,21 +3,37 @@ import { Link } from "react-router-dom";
 
 import { supabase } from "../supabaseClient";
 
-async function uploadImage(selectedFile)   {
-  console.log("uploadImage function")
+
+async function uploadCloudinaryImage(selectedFile) {
+
   const fileFullName = selectedFile.name;
   const fileName = fileFullName.split(".")[0];
   const fileExt = fileFullName.split(".")[1];
 
-  const { data: imgData, error } = await supabase.storage
-          .from("graves")
-          .upload(`${fileName}_${Date.now()}.${fileExt}`, selectedFile, {
-            cacheControl: "3600",
-            upsert: false,
-          });
+  const formData = new FormData();
 
-  return {imgData, error}
+  formData.append("file", selectedFile);
+  formData.append("upload_preset", "nimlzmm1");
+
+try {
+  const response = await fetch('https://api.cloudinary.com/v1_1/dqbunghp7/upload', {
+    method: 'POST',
+    body: formData
+  });
+
+  const imgData = await response.json();
+  return { imgData, error: null }
+
+} catch (error) {
+  console.error(error);
+  return { imgData: null, error }
 }
+  
+
+}
+
+
+
 
 function Add() {
   const [name, setName] = useState("");
@@ -50,12 +66,10 @@ function Add() {
   }, []);
 
   function submit() {
-    console.log(name);
-    console.log(selectedFile);
     const addGrave = async () => {
-      
+
       try {
-        const {imgData, error} = await uploadImage(selectedFile)
+        const { imgData, error } = await uploadCloudinaryImage(selectedFile)
 
         if (error) {
           throw error;
@@ -70,12 +84,13 @@ function Add() {
                 surname,
                 birth_date: birthDate,
                 death_date: deathDate,
-                img: imgData.path,
+                img: `v${imgData.version}/${imgData.public_id}`,
                 graveyard: selectedGraveyard,
               },
             ]);
 
             if (error) {
+              console.log("error", error);
               throw error;
             }
             if (data) {
@@ -137,16 +152,16 @@ function Add() {
         <input type="file" accept="image/*" onChange={chandleFileInput} />
       </div>
       <div>
-          <label>cmentarz:</label>
-          <select
-            name="lang"
-            id="lang"
-            onChange={onGraveyardSelect}
-            //value={i18n.language}
-          >
-            {graveyards?.map(graveyard => <option value={graveyard.id}>{graveyard.name}</option>)}
-          </select>
-        </div>
+        <label>cmentarz:</label>
+        <select
+          name="lang"
+          id="lang"
+          onChange={onGraveyardSelect}
+        //value={i18n.language}
+        >
+          {graveyards?.map(graveyard => <option value={graveyard.id}>{graveyard.name}</option>)}
+        </select>
+      </div>
       <button onClick={submit}>dodaj</button>
     </div>
   );
