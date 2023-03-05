@@ -7,8 +7,7 @@ import { supabase } from "../supabaseClient";
 async function uploadCloudinaryImage(selectedFile) {
 
   const fileFullName = selectedFile.name;
-  const fileName = fileFullName.split(".")[0];
-  const fileExt = fileFullName.split(".")[1];
+
 
   const formData = new FormData();
 
