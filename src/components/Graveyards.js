@@ -19,7 +19,7 @@ function Graveyards() {
           throw error;
         }
         if (data) {
-          console.log(data);
+          //console.log(data);
           setGraveyards(data);
         }
       } catch (error) {

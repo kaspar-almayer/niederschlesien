@@ -12,12 +12,12 @@ function App() {
   useEffect(() => {
     const getProfile = async () => {
       try {
-        let { data, error, status } = await supabase.from("graves").select("*");
+        let { data, error, status } = await supabase.from("graves").select('*, people (*)');
         if (error && status !== 406) {
           throw error;
         }
         if (data) {
-          console.log(data);
+          //console.log(data);
           setGraves(data);
         }
       } catch (error) {

@@ -144,28 +144,51 @@ img {
     @media (min-width: 600px) {
         display: flex;
 
-     }
+    }
+
+    &__img-wrapper {
+        //flex: 0 1 40%
+    }
     
     &__img {
         @media (min-width: 600px) {
             max-height: 300px;
             object-fit: cover;
-            flex: 0 1 200px;
+            //flex: 0 1 200px;
 
         }
     }
     
     &__content {
+        
+        
         padding: 1rem;
         border-bottom: 2px solid $base-color;
         border-left: none;
         flex: 1;
-
+        
         @media (min-width: 600px) {
             border-top: 2px solid $base-color;
             border-bottom: none;
+            // swiper ugly fix
+            width: 100%;
+            max-width: 100%;
+            max-height: 100vh;
+            // CSS Grid/Flexbox bug size workaround
+            // @see https://github.com/kenwheeler/slick/issues/982
+            min-height: 0;
+            min-width: 0;
         }
     }
+
+    &__link {
+        padding-left: 25px;
+        padding-top: 10px;
+    }
+}
+
+.person {
+    padding: 0 25px 10px 25px;
 }
 
 .graveyards-map {
@@ -185,4 +208,11 @@ img {
         flex: 50%;
         padding: 2rem;
     }
+}
+
+.mySwiper {
+    --swiper-navigation-size: 22px;
+    --swiper-navigation-color: $base-color;
+    --swiper-navigation-sides-offset: 0;
+    --swiper-pagination-bottom: 0;
 }

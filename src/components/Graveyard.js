@@ -42,7 +42,7 @@ function Graveyard() {
         throw error;
       }
       if (data) {
-        console.log(data);
+        //console.log(data);
         setGraveyard(data[0]);
       }
     } catch (error) {

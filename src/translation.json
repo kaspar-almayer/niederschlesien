@@ -1,7 +1,7 @@
 {
   "pl": {
     "translation": {
-      "mainHeading": "Katalog niemieckich grobów w Polsce",
+      "mainHeading": "Niemieckie groby w Polsce",
       "grave": {
         "name": "Imię",
         "surname": "Nazwisko",
@@ -27,7 +27,7 @@
   },
   "de": {
     "translation": {
-      "mainHeading": "Verzeichnis deutscher Gräber in Polen",
+      "mainHeading": "Deutsche Gräber in Polen",
       "grave": {
         "name": "Vorname",
         "surname": "Nachname",
