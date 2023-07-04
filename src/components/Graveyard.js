@@ -17,10 +17,7 @@ function Graveyard() {
   useEffect(() => {
   const getGravese = async () => {
     try {
-      let { data, error, status } = await supabase
-        .from("graves")
-        .select("*")
-        .eq("graveyard", graveyardId);
+      let { data, error, status } = await supabase.from("graves").select('*, people (*)').eq("graveyard", graveyardId);
       if (error && status !== 406) {
         throw error;
       }
