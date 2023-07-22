@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider, createHashRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 
 import i18n from "i18next";
@@ -18,7 +18,7 @@ import Graveyard from "./components/Graveyard";
 import Search from "./components/Search";
 import Contact from "./components/Contact";
 
-const router = createHashRouter([
+const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
