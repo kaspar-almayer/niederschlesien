@@ -1,11 +1,12 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import logo from "../assets/logo.svg"
 
 function Header() {
   const { t, i18n } = useTranslation();
-  const changeLang = (e) => {
-    i18n.changeLanguage(e.target.value);
+  const changeLang = (selectValue: React.ChangeEvent<HTMLSelectElement>) => {
+    i18n.changeLanguage(selectValue.target.value);
   };
   return (
     <header className="main-header">

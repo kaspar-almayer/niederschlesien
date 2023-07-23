@@ -4,20 +4,20 @@ import { useTranslation } from "react-i18next";
 
 import { supabase } from "../supabaseClient";
 
-import Header from "./Header";
+import Header from "./Header.tsx";
 import Grave from "./Grave";
 const Map = React.lazy(() => import('./Map'));
 
 function Graveyard() {
   const [graves, setGraves] = useState(null);
   const [graveyard, setGraveyard] = useState(null);
-  let { graveyardId } = useParams();
+  const { graveyardId } = useParams();
   const { t } = useTranslation();
   
   useEffect(() => {
   const getGravese = async () => {
     try {
-      let { data, error, status } = await supabase.from("graves").select('*, people (*)').eq("graveyard", graveyardId);
+      const { data, error, status } = await supabase.from("graves").select('*, people (*)').eq("graveyard", graveyardId);
       if (error && status !== 406) {
         throw error;
       }
@@ -31,7 +31,7 @@ function Graveyard() {
   };
   const getGraveyard = async () => {
     try {
-      let { data, error, status } = await supabase
+      const { data, error, status } = await supabase
         .from("graveyards")
         .select("*")
         .eq("id", graveyardId);

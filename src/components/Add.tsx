@@ -29,8 +29,6 @@ try {
 }
 
 
-
-
 function Add() {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -43,7 +41,7 @@ function Add() {
   useEffect(() => {
     const getProfile = async () => {
       try {
-        let { data, error, status } = await supabase
+        const { data, error, status } = await supabase
           .from("graveyards")
           .select("*");
         if (error && status !== 406) {

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import { supabase } from "../supabaseClient";
 
-import Header from "./Header";
+import Header from "./Header.tsx";
 import Grave from "./Grave";
 
 function Search() {

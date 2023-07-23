@@ -1,6 +1,4 @@
-//import hero_img1 from "../assets/hero-img1.jpg";
-//import hero_img2 from "../assets/hero-img2.jpg";
-
+import React from "react";
 import { useTranslation } from "react-i18next";
 
 function Hero() {
