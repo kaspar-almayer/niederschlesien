@@ -3,19 +3,22 @@ import { useTranslation } from "react-i18next";
 
 import { supabase } from "../supabaseClient";
 
-import Header from "./Header";
+import Header from "./Header.tsx";
 import Grave from "./Grave";
+
+import { GraveType } from "../types.ts";
+import { PostgrestError } from "@supabase/supabase-js";
 
 function Search() {
   const { t } = useTranslation();
   const [surname, setSurname] = useState("");
-  const [graves, setGraves] = useState(null);
+  const [graves, setGraves] = useState<GraveType[] | null>(null);
   const [message, setMessage] = useState("");
 
   async function search() {
     try {
-      const { data, error } = await supabase
-        .from("graves")
+      const { data, error} = await supabase
+        .from("gravesss")
         .select()
         .textSearch("surname", `${surname}`);
 
@@ -26,12 +29,13 @@ function Search() {
         setGraves(data);
         setMessage("");
       } else {
-        setMessage(t("search.errorMessage"));
+        setMessage(t("search.errorMessage") ?? '');
         setGraves(null);
       }
     } catch (error) {
-      console.log(error);
-      setMessage(`Error: ${error.code}`);
+      const postgrestError = error as PostgrestError;
+      console.log("postgrestError", postgrestError);
+      setMessage(`Error: ${postgrestError.code}`);
       setGraves(null);
     }
   }

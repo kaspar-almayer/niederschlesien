@@ -4,34 +4,36 @@ import { useTranslation } from "react-i18next";
 
 import { supabase } from "../supabaseClient";
 
-import Header from "./Header";
+import Header from "./Header.tsx";
 import Grave from "./Grave";
+import { GraveType, GraveyardType} from "../types.ts";
+import {typedErrorLog} from '../helpers.ts'
+
 const Map = React.lazy(() => import('./Map'));
 
 function Graveyard() {
-  const [graves, setGraves] = useState(null);
-  const [graveyard, setGraveyard] = useState(null);
-  let { graveyardId } = useParams();
+  const [graves, setGraves] = useState<GraveType[] | null >(null);
+  const [graveyard, setGraveyard] = useState<GraveyardType | null>(null);
+  const { graveyardId } = useParams();
   const { t } = useTranslation();
   
   useEffect(() => {
   const getGravese = async () => {
     try {
-      let { data, error, status } = await supabase.from("graves").select('*, people (*)').eq("graveyard", graveyardId);
+      const { data, error, status } = await supabase.from("graves").select('*, people (*)').eq("graveyard", graveyardId);
       if (error && status !== 406) {
         throw error;
       }
       if (data) {
-        //console.log(data);
         setGraves(data);
       }
     } catch (error) {
-      alert(error.message);
+      typedErrorLog(error);
     }
   };
   const getGraveyard = async () => {
     try {
-      let { data, error, status } = await supabase
+      const { data, error, status } = await supabase
         .from("graveyards")
         .select("*")
         .eq("id", graveyardId);
@@ -39,11 +41,10 @@ function Graveyard() {
         throw error;
       }
       if (data) {
-        //console.log(data);
         setGraveyard(data[0]);
       }
     } catch (error) {
-      alert(error.message);
+      typedErrorLog(error);
     }
   };
 

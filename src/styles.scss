@@ -209,10 +209,9 @@ img {
         padding: 2rem;
     }
 }
-
-.mySwiper {
-    --swiper-navigation-size: 22px;
-    --swiper-navigation-color: $base-color;
-    --swiper-navigation-sides-offset: 0;
-    --swiper-pagination-bottom: 0;
+* {
+        --swiper-navigation-size: 22px;
+        --swiper-navigation-color: $base-color;
+        --swiper-navigation-sides-offset: 0;
+        --swiper-pagination-bottom: 0; 
 }

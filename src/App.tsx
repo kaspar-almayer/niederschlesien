@@ -4,15 +4,18 @@ import "./styles.scss";
 
 import { supabase } from "./supabaseClient";
 import Grave from "./components/Grave";
-import Header from "./components/Header";
-import Hero from "./components/Hero";
+import Header from "./components/Header.tsx";
+import Hero from "./components/Hero.tsx";
+
+import { GraveType } from "./types.ts";
+import {typedErrorLog} from './helpers.ts'
 
 function App() {
-  const [graves, setGraves] = useState(null);
+  const [graves, setGraves] = useState<GraveType[] | null>(null);
   useEffect(() => {
     const getProfile = async () => {
       try {
-        let { data, error, status } = await supabase.from("graves").select('*, people (*)');
+        const { data, error, status } = await supabase.from("graves").select('*, people (*)');
         if (error && status !== 406) {
           throw error;
         }
@@ -21,7 +24,7 @@ function App() {
           setGraves(data);
         }
       } catch (error) {
-        alert(error.message);
+        typedErrorLog(error);
       }
     };
 
