@@ -4,15 +4,17 @@ import { useTranslation } from "react-i18next";
 import { supabase } from "../supabaseClient";
 
 import Header from "./Header.tsx";
+import { GraveyardType} from "../types.ts";
+import {typedErrorLog} from '../helpers.ts'
 const Map = React.lazy(() => import('./Map'));
 
 function Graveyards() {
   const { t } = useTranslation();
-  const [graveyards, setGraveyards] = useState(null);
+  const [graveyards, setGraveyards] = useState<GraveyardType[] | null>(null);
   useEffect(() => {
     const getProfile = async () => {
       try {
-        let { data, error, status } = await supabase
+        const { data, error, status } = await supabase
           .from("graveyards")
           .select("*");
         if (error && status !== 406) {
@@ -23,7 +25,7 @@ function Graveyards() {
           setGraveyards(data);
         }
       } catch (error) {
-        alert(error.message);
+        typedErrorLog(error);
       }
     };
 

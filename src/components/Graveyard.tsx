@@ -6,11 +6,14 @@ import { supabase } from "../supabaseClient";
 
 import Header from "./Header.tsx";
 import Grave from "./Grave";
+import { GraveType, GraveyardType} from "../types.ts";
+import {typedErrorLog} from '../helpers.ts'
+
 const Map = React.lazy(() => import('./Map'));
 
 function Graveyard() {
-  const [graves, setGraves] = useState(null);
-  const [graveyard, setGraveyard] = useState(null);
+  const [graves, setGraves] = useState<GraveType[] | null >(null);
+  const [graveyard, setGraveyard] = useState<GraveyardType | null>(null);
   const { graveyardId } = useParams();
   const { t } = useTranslation();
   
@@ -22,11 +25,10 @@ function Graveyard() {
         throw error;
       }
       if (data) {
-        //console.log(data);
         setGraves(data);
       }
     } catch (error) {
-      alert(error.message);
+      typedErrorLog(error);
     }
   };
   const getGraveyard = async () => {
@@ -39,11 +41,10 @@ function Graveyard() {
         throw error;
       }
       if (data) {
-        //console.log(data);
         setGraveyard(data[0]);
       }
     } catch (error) {
-      alert(error.message);
+      typedErrorLog(error);
     }
   };
 

@@ -1,17 +1,22 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { supabase } from "../supabaseClient";
+import { GraveyardType} from "../types.ts";
+import {typedErrorLog} from '../helpers.ts'
 
+async function uploadCloudinaryImage(selectedFile: File | null) {
 
-async function uploadCloudinaryImage(selectedFile) {
+  if (!selectedFile) {
+    return { imgData: null, error: null }
+  }
 
-  const formData = new FormData();
-  
-  formData.append("file", selectedFile);
-  formData.append("upload_preset", "nimlzmm1");
-
-try {
+    const formData = new FormData();
+    
+    formData.append("file", selectedFile);
+    formData.append("upload_preset", "nimlzmm1");
+    
+    try {
   const response = await fetch('https://api.cloudinary.com/v1_1/dqbunghp7/upload', {
     method: 'POST',
     body: formData
@@ -34,10 +39,11 @@ function Add() {
   const [surname, setSurname] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [deathDate, setDeathDate] = useState("");
-  const [selectedFile, setSelectedFile] = useState("");
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const [selectedGraveyard, setSelectedGraveyard] = useState("");
-  const [graveyards, setGraveyards] = useState(null);
+  const [graveyards, setGraveyards] = useState<GraveyardType[] | null>(null);
+  
   useEffect(() => {
     const getProfile = async () => {
       try {
@@ -52,7 +58,7 @@ function Add() {
           setGraveyards(data);
         }
       } catch (error) {
-        alert(error.message);
+        typedErrorLog(error);
       }
     };
 
@@ -101,13 +107,15 @@ function Add() {
     addGrave();
   }
 
-  function chandleFileInput(e) {
-    console.log(e.target.files[0]);
-    setSelectedFile(e.target.files[0]);
-  }
-  const onGraveyardSelect = (e) => {
-    setSelectedGraveyard(e.target.value);
-    console.log(e.target.value)
+  function chandleFileInput(event: React.ChangeEvent<HTMLInputElement>) {
+    //console.log(e.target.files[0]);
+    if (event.target.files) {
+      setSelectedFile(event.target.files[0]);
+    }
+  } 
+  const onGraveyardSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedGraveyard(event.target.value);
+    console.log(event.target.value)
   };
 
   return (

@@ -7,8 +7,11 @@ import Grave from "./components/Grave";
 import Header from "./components/Header.tsx";
 import Hero from "./components/Hero.tsx";
 
+import { GraveType } from "./types.ts";
+import {typedErrorLog} from './helpers.ts'
+
 function App() {
-  const [graves, setGraves] = useState(null);
+  const [graves, setGraves] = useState<GraveType[] | null>(null);
   useEffect(() => {
     const getProfile = async () => {
       try {
@@ -21,7 +24,7 @@ function App() {
           setGraves(data);
         }
       } catch (error) {
-        alert(error.message);
+        typedErrorLog(error);
       }
     };
 
